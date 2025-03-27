@@ -10,5 +10,9 @@ describe('randomNumber', () => {
         expect(() => randomNumber(1, '2')).toThrow();
     })
 
+    it('throw exception when min > max', () => {
+        expect(() => randomNumber(3, 1)).toThrow();
+    })
+
 
 })
