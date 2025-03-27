@@ -7,7 +7,7 @@ describe('randomNumber', () => {
     })
 
     it('throw exception when min or max is not a number', () => {
-        expect(randomNumber(1, 'x')).toThrow();
+        expect(() => randomNumber(1, '2')).toThrow();
     })
 
 
