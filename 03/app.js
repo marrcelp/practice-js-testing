@@ -3,7 +3,10 @@ export default function randomNumber(min, max) {
     if(typeof min !== 'number' || typeof max !== 'number'){
         throw new Error ('Property have to be a number!');
 
-    } else {
+    } else if (min > max) {
+        throw new Error ('Max has to be greater than Min!')
+    }
+     else {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 }
