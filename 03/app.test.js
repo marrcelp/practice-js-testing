@@ -20,5 +20,4 @@ describe('randomNumber', () => {
         expect(result).toBeLessThanOrEqual(5);
     })
 
-
 })
