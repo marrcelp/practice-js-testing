@@ -6,6 +6,10 @@ export default class User {
             throw new Error ('Invalid email format');
         }
 
+        if(password.length < 6 ){
+            throw new Error ('Password must be at least 6 characters long')
+        }
+
         this.email = email;
         this.password = password;
     }
