@@ -7,7 +7,7 @@ export default class User {
         }
 
         if(password.length < 6 ){
-            throw new Error ('Password must be at least 6 characters long')
+            throw new Error ('Password must be at least 6 characters long');
         }
 
         this.email = email;
@@ -20,6 +20,10 @@ export default class User {
 
     getPassword(){
         return this.password;
+    }
+
+    login(){
+        return this.email.includes('devmentor.pl');
     }
 
 }
