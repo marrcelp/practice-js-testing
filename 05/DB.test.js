@@ -63,7 +63,7 @@ describe('DB', () => {
         const second = await db.insert({name: 'testowe2', id: 7});
 
         // const itemToRemove = await db.remove(5);
-        expect(db.remove(5)).resolves.toBe('Item was remove!');
+        await expect(db.remove(5)).resolves.toBe('Item was remove!');
     })
 
     it('Should throw exception when item to remove doesnt exist', async () => {
@@ -96,6 +96,23 @@ describe('DB', () => {
         const second = await db.insert({name: 'testowe2', id: 7});
 
         await expect(db.update({id: 5, name: 'test'})).resolves.toStrictEqual({name: 'test', id: 5})
+    })
+
+    it('Should clear array and return true', async () => {
+        const db = new DB();
+        const first = await db.insert({name: 'testowe1', id: 5});
+        const second = await db.insert({name: 'testowe2', id: 7});
+
+        await expect(db.truncate()).resolves.toBe(true);
+        expect(db._rows).toStrictEqual([]);
+    })
+
+    it('Should return array with all elements', async() => {
+        const db = new DB();
+        const first = await db.insert({name: 'testowe1', id: 5});
+        const second = await db.insert({name: 'testowe2', id: 7});
+
+        await expect(db.getRows()).resolves.toStrictEqual([{name: 'testowe1', id: 5}, {name: 'testowe2', id: 7}]);
     })
 
     
