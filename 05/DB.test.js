@@ -115,5 +115,14 @@ describe('DB', () => {
         await expect(db.getRows()).resolves.toStrictEqual([{name: 'testowe1', id: 5}, {name: 'testowe2', id: 7}]);
     })
 
+    it('Should return how many elements are in the array', async() => {
+        const db = new DB();
+        const first = await db.insert({name: 'testowe1', id: 5});
+        const second = await db.insert({name: 'testowe2', id: 7});
+        const elements = await db.getRows();
+
+        expect(elements.length).toBe(2);
+    })
+
     
 })
